@@ -18,7 +18,7 @@ class GetPossibleWordsInfo:
         unique_vowels_count = 0
 
         for word in list_all_possbile_words:
-            possible_words_data[word] = {} # adding the complete word as the first key
+            possible_words_data[word] = {} # adding the complete word as the key
             for letter in word:
                 if letter in possible_words_data[word].keys():
                     possible_words_data[word][letter] += 1
