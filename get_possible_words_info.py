@@ -30,3 +30,25 @@ class GetPossibleWordsInfo:
             possible_words_data[word]["unique_letters_count"] = len(possible_words_data[word].keys()) - 1 # subtract the unique_vowels_count key from unique letter count
             unique_vowels_count = 0 # reset unique vowel count for next word
         return possible_words_data
+    
+    @staticmethod    
+    def get_letter_index_from_words(list_all_possbile_words : list) -> dict:
+        """
+        Get letter position for every word in the list of words
+
+        Args:
+            list_all_possible_words (list) : list of words
+
+        Returns:
+            Dictionary of letter's index for each word
+            
+            Example:
+                {"weary" : {0: 'w', 1: 'e', 2: 'a', 3: 'r', 4: 'y'}}
+        """
+        words_data = {}
+
+        for word in list_all_possbile_words:
+            words_data[word] = {}
+            for index in range(0, len(word)):
+                words_data[word][index] = word[index]            
+        return words_data

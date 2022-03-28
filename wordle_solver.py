@@ -33,7 +33,7 @@ with sync_playwright() as p:
 
     for letter, selector in WordleSelectors.BOARD_DATA['WORD_1'].items():
         time.sleep(0.5)
-        guess_scheme_data[page.inner_text(selector).lower()] = [position, page.get_attribute(selector, "data-state")]
+        guess_scheme_data[position] = [page.inner_text(selector).lower(), page.get_attribute(selector, "data-state")]
         position += 1
     
     WordleGuess.guess_word(guess_scheme_data, list_all_possbile_words)
