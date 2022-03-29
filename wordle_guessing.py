@@ -1,9 +1,21 @@
 import random
-from get_possible_words_info import GetPossibleWordsInfo
+
+from starting_data.get_possible_words_info import GetPossibleWordsInfo
+
 
 class WordleGuess:
     @staticmethod
     def guess_word(guess_scheme_data : dict, list_all_possbile_words : list) -> list:
+        """
+        The logic for filtering words and returning a next best guess based on a previously entered word
+
+        Args:
+            guess_scheme_data: Dictionary containing the data for the currently guessed word (letter, letter position and letter state)
+            list_all_possbile_words: List of possible words that contains the possible solution
+
+        Returns:
+            List containing the randomly guessed word and the filtered list of possible guesses
+        """
         filtered_possible_words = [] # Resulting list of words after filtering
 
         absent_letters_in_word = set()
