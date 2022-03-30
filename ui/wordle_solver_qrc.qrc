@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="assets">
+    <file>assets/ui-close-button.png</file>
+    <file>assets/ui-minimize-button.png</file>
+    <file>assets/ui-logo.png</file>
+    <file>assets/ui-enter-button.png</file>
+    <file>assets/ui-main-window.png</file>
+  </qresource>
+</RCC>

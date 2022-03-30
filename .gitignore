@@ -110,6 +110,7 @@ ENV/
 env.bak/
 venv.bak/
 wordle-solver-venv/
+.vscode/
 
 # Spyder project settings
 .spyderproject
