@@ -56,13 +56,17 @@ def keep_guessing(page : object, guessed_word_data : list) -> list:
             for letter_data in guess_scheme_data.values():
                 all_letters_state.append(letter_data[1])
             
-            # Checking if all the letters are 'correct'
-            if len(set(all_letters_state)) == 1:
+            # Checking if all the letters are 'correct' and if the solution is found
+            # If the solution is not found return N/A 0/6
+            if set(all_letters_state) == {'correct'}:
                 solution_is_found = True
                 return [guessed_word_data[0], attempt]
+            elif attempt == 6:
+                return ["N/A", 0]
             else:
                 guessed_word_data = WordleGuess.guess_word(guess_scheme_data, guessed_word_data[1]) # keep filtering for the next guess
         break
+
 
 def solve_wordle() -> list:
     """
@@ -107,7 +111,7 @@ def solve_wordle() -> list:
             all_letters_state.append(letter_data[1])
         
         # Checking if all the letters are 'correct' and the starting word was the solution
-        if len(set(all_letters_state)) == 1:
+        if set(all_letters_state) == {'correct'}:
             return [starting_word, 1]
         else:
             # Using data from previous guess in order to take the next guess
