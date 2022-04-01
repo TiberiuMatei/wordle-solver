@@ -2189,6 +2189,7 @@ smoke
 snack
 snake
 sneak
+snout
 socks
 soils
 solar

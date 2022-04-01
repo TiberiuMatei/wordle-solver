@@ -42,30 +42,33 @@ def keep_guessing(page : object, guessed_word_data : list) -> list:
             all_letters_state = [] # List of every letter state (absent | present | correct)
             letter_index = 0
 
-            # Typing guessed word
-            page.type(WordleSelectors.BOARD[f'WORD_{attempt}'], guessed_word_data[0])
-            page.press(WordleSelectors.BOARD[f'WORD_{attempt}'], 'Enter')
-
-            # Getting data for guessed word {index : [letter, letter_state]}
-            for selector in WordleSelectors.BOARD_DATA[f'WORD_{attempt}'].values():
-                time.sleep(0.5)
-                guess_scheme_data[letter_index] = [page.inner_text(selector).lower(), page.get_attribute(selector, "data-state")] # {0: ['a', 'correct']}
-                letter_index += 1
-
-            # Getting the state for every letter (absent | present | correct)
-            for letter_data in guess_scheme_data.values():
-                all_letters_state.append(letter_data[1])
-            
-            # Checking if all the letters are 'correct' and if the solution is found
-            # If the solution is not found return N/A 0/6
-            if set(all_letters_state) == {'correct'}:
-                solution_is_found = True
-                return [guessed_word_data[0], attempt]
-            elif attempt == 6:
+            # If the word is not present in the possible_words.txt
+            if guessed_word_data[0] == "N/A":
                 return ["N/A", 0]
             else:
-                guessed_word_data = WordleGuess.guess_word(guess_scheme_data, guessed_word_data[1]) # keep filtering for the next guess
-        break
+                # Typing guessed word
+                page.type(WordleSelectors.BOARD[f'WORD_{attempt}'], guessed_word_data[0])
+                page.press(WordleSelectors.BOARD[f'WORD_{attempt}'], 'Enter')
+
+                # Getting data for guessed word {index : [letter, letter_state]}
+                for selector in WordleSelectors.BOARD_DATA[f'WORD_{attempt}'].values():
+                    time.sleep(0.5)
+                    guess_scheme_data[letter_index] = [page.inner_text(selector).lower(), page.get_attribute(selector, "data-state")] # {0: ['a', 'correct']}
+                    letter_index += 1
+
+                # Getting the state for every letter (absent | present | correct)
+                for letter_data in guess_scheme_data.values():
+                    all_letters_state.append(letter_data[1])
+                
+                # Checking if all the letters are 'correct' and if the solution is found
+                # If the solution is not found return N/A 0/6
+                if set(all_letters_state) == {'correct'}:
+                    solution_is_found = True
+                    return [guessed_word_data[0], attempt]
+                elif attempt == 6:
+                    return ["N/A", 0]
+                else:
+                    guessed_word_data = WordleGuess.guess_word(guess_scheme_data, guessed_word_data[1]) # keep filtering for the next guess
 
 
 def solve_wordle() -> list:

@@ -112,5 +112,7 @@ class WordleGuess:
                                 filtered_possible_words.remove(word)
                             else:
                                 continue
-
-        return [random.choice(filtered_possible_words), filtered_possible_words]
+        if filtered_possible_words == []: # If the word is not present in the possible_words.txt
+            return ["N/A", "N/A"]
+        else:
+            return [random.choice(filtered_possible_words), filtered_possible_words]
