@@ -1872,6 +1872,7 @@ named
 names
 nasal
 nasty
+natal
 naval
 needs
 nerve
@@ -2136,6 +2137,7 @@ shape
 share
 shark
 sharp
+shawl
 sheep
 sheer
 sheet
