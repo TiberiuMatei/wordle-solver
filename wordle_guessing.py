@@ -26,8 +26,11 @@ class WordleGuess:
         correct_letters_in_word = set()
         correct_letters_data = {} # {0: ['a', 'correct']}
 
+        current_word = ""
+
         # data = [letter, letter_state = absent | present | correct]
         for index,data in guess_scheme_data.items():
+            current_word += data[0]
             match data[1]:
                 case "absent":
                     absent_letters_in_word.add(data[0])
@@ -115,4 +118,6 @@ class WordleGuess:
         if filtered_possible_words == []: # If the word is not present in the possible_words.txt
             return ["N/A", "N/A"]
         else:
+            if current_word in filtered_possible_words: # Remove word from list if word has correct letters but was already used
+                filtered_possible_words.remove(current_word)
             return [random.choice(filtered_possible_words), filtered_possible_words]
