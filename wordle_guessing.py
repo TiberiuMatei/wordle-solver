@@ -76,7 +76,7 @@ class WordleGuess:
                             else:
                                 continue
 
-        # Filter and find words that cotain the 'present' letters at different indices
+        # Filter and find words that contain the 'present' letters at different indices
         if len(present_letters_in_word) != 0:
             if filtered_possible_words is not []: # if filtering was previously done based on the 'absent' letters
                 words_data = GetPossibleWordsInfo.get_letter_index_from_words(filtered_possible_words) # example: words_data = {"weary" : {0: 'w', 1: 'e', 2: 'a', 3: 'r', 4: 'y'}}            

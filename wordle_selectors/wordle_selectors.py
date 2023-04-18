@@ -1,55 +1,55 @@
 class WordleSelectors:
     CLOSE_COOKIES_RIBBON_BUTTON = '#pz-gdpr-btn-closex'
-    CLOSE_GAME_INFO_MODAL_BUTTON = 'game-modal path'
+    CLOSE_GAME_INFO_MODAL_BUTTON = '//button[@class="Modal-module_closeIcon__TcEKb"]'
     BOARD = {
-        'WORD_1' : 'game-row:nth-child(1) .row',
-        'WORD_2' : 'game-row:nth-child(2) .row',
-        'WORD_3' : 'game-row:nth-child(3) .row',
-        'WORD_4' : 'game-row:nth-child(4) .row',
-        'WORD_5' : 'game-row:nth-child(5) .row',
-        'WORD_6' : 'game-row:nth-child(6) .row',
+        'WORD_1': '//div[@aria-label="Row 1"]',
+        'WORD_2': '//div[@aria-label="Row 2"]',
+        'WORD_3': '//div[@aria-label="Row 3"]',
+        'WORD_4': '//div[@aria-label="Row 4"]',
+        'WORD_5': '//div[@aria-label="Row 5"]',
+        'WORD_6': '//div[@aria-label="Row 6"]',
     }
     BOARD_DATA = {
-        'WORD_1' : {
-            'LETTER_1' : 'game-row:nth-child(1) .row game-tile:nth-child(1) .tile',
-            'LETTER_2' : 'game-row:nth-child(1) .row game-tile:nth-child(2) .tile',
-            'LETTER_3' : 'game-row:nth-child(1) .row game-tile:nth-child(3) .tile',
-            'LETTER_4' : 'game-row:nth-child(1) .row game-tile:nth-child(4) .tile',
-            'LETTER_5' : 'game-row:nth-child(1) .row game-tile:nth-child(5) .tile',
+        'WORD_1': {
+            'LETTER_1': '//*[@id="wordle-app-game"]/div[1]/div/div[1]/div[1]/div',
+            'LETTER_2': '//*[@id="wordle-app-game"]/div[1]/div/div[1]/div[2]/div',
+            'LETTER_3': '//*[@id="wordle-app-game"]/div[1]/div/div[1]/div[3]/div',
+            'LETTER_4': '//*[@id="wordle-app-game"]/div[1]/div/div[1]/div[4]/div',
+            'LETTER_5': '//*[@id="wordle-app-game"]/div[1]/div/div[1]/div[5]/div',
         },
-        'WORD_2' : {
-            'LETTER_1' : 'game-row:nth-child(2) .row game-tile:nth-child(1) .tile',
-            'LETTER_2' : 'game-row:nth-child(2) .row game-tile:nth-child(2) .tile',
-            'LETTER_3' : 'game-row:nth-child(2) .row game-tile:nth-child(3) .tile',
-            'LETTER_4' : 'game-row:nth-child(2) .row game-tile:nth-child(4) .tile',
-            'LETTER_5' : 'game-row:nth-child(2) .row game-tile:nth-child(5) .tile',
+        'WORD_2': {
+            'LETTER_1': '//*[@id="wordle-app-game"]/div[1]/div/div[2]/div[1]/div',
+            'LETTER_2': '//*[@id="wordle-app-game"]/div[1]/div/div[2]/div[2]/div',
+            'LETTER_3': '//*[@id="wordle-app-game"]/div[1]/div/div[2]/div[3]/div',
+            'LETTER_4': '//*[@id="wordle-app-game"]/div[1]/div/div[2]/div[4]/div',
+            'LETTER_5': '//*[@id="wordle-app-game"]/div[1]/div/div[2]/div[5]/div',
         },
-        'WORD_3' : {
-            'LETTER_1' : 'game-row:nth-child(3) .row game-tile:nth-child(1) .tile',
-            'LETTER_2' : 'game-row:nth-child(3) .row game-tile:nth-child(2) .tile',
-            'LETTER_3' : 'game-row:nth-child(3) .row game-tile:nth-child(3) .tile',
-            'LETTER_4' : 'game-row:nth-child(3) .row game-tile:nth-child(4) .tile',
-            'LETTER_5' : 'game-row:nth-child(3) .row game-tile:nth-child(5) .tile',
+        'WORD_3': {
+            'LETTER_1': '//*[@id="wordle-app-game"]/div[1]/div/div[3]/div[1]/div',
+            'LETTER_2': '//*[@id="wordle-app-game"]/div[1]/div/div[3]/div[2]/div',
+            'LETTER_3': '//*[@id="wordle-app-game"]/div[1]/div/div[3]/div[3]/div',
+            'LETTER_4': '//*[@id="wordle-app-game"]/div[1]/div/div[3]/div[4]/div',
+            'LETTER_5': '//*[@id="wordle-app-game"]/div[1]/div/div[3]/div[5]/div',
         },
-        'WORD_4' : {
-            'LETTER_1' : 'game-row:nth-child(4) .row game-tile:nth-child(1) .tile',
-            'LETTER_2' : 'game-row:nth-child(4) .row game-tile:nth-child(2) .tile',
-            'LETTER_3' : 'game-row:nth-child(4) .row game-tile:nth-child(3) .tile',
-            'LETTER_4' : 'game-row:nth-child(4) .row game-tile:nth-child(4) .tile',
-            'LETTER_5' : 'game-row:nth-child(4) .row game-tile:nth-child(5) .tile',
+        'WORD_4': {
+            'LETTER_1': '//*[@id="wordle-app-game"]/div[1]/div/div[4]/div[1]/div',
+            'LETTER_2': '//*[@id="wordle-app-game"]/div[1]/div/div[4]/div[2]/div',
+            'LETTER_3': '//*[@id="wordle-app-game"]/div[1]/div/div[4]/div[3]/div',
+            'LETTER_4': '//*[@id="wordle-app-game"]/div[1]/div/div[4]/div[4]/div',
+            'LETTER_5': '//*[@id="wordle-app-game"]/div[1]/div/div[4]/div[5]/div',
         },
-        'WORD_5' : {
-            'LETTER_1' : 'game-row:nth-child(5) .row game-tile:nth-child(1) .tile',
-            'LETTER_2' : 'game-row:nth-child(5) .row game-tile:nth-child(2) .tile',
-            'LETTER_3' : 'game-row:nth-child(5) .row game-tile:nth-child(3) .tile',
-            'LETTER_4' : 'game-row:nth-child(5) .row game-tile:nth-child(4) .tile',
-            'LETTER_5' : 'game-row:nth-child(5) .row game-tile:nth-child(5) .tile',
+        'WORD_5': {
+            'LETTER_1': '//*[@id="wordle-app-game"]/div[1]/div/div[5]/div[1]/div',
+            'LETTER_2': '//*[@id="wordle-app-game"]/div[1]/div/div[5]/div[2]/div',
+            'LETTER_3': '//*[@id="wordle-app-game"]/div[1]/div/div[5]/div[3]/div',
+            'LETTER_4': '//*[@id="wordle-app-game"]/div[1]/div/div[5]/div[4]/div',
+            'LETTER_5': '//*[@id="wordle-app-game"]/div[1]/div/div[5]/div[5]/div',
         },
-        'WORD_6' : {
-            'LETTER_1' : 'game-row:nth-child(6) .row game-tile:nth-child(1) .tile',
-            'LETTER_2' : 'game-row:nth-child(6) .row game-tile:nth-child(2) .tile',
-            'LETTER_3' : 'game-row:nth-child(6) .row game-tile:nth-child(3) .tile',
-            'LETTER_4' : 'game-row:nth-child(6) .row game-tile:nth-child(4) .tile',
-            'LETTER_5' : 'game-row:nth-child(6) .row game-tile:nth-child(5) .tile',
+        'WORD_6': {
+            'LETTER_1': '//*[@id="wordle-app-game"]/div[1]/div/div[6]/div[1]/div',
+            'LETTER_2': '//*[@id="wordle-app-game"]/div[1]/div/div[6]/div[2]/div',
+            'LETTER_3': '//*[@id="wordle-app-game"]/div[1]/div/div[6]/div[3]/div',
+            'LETTER_4': '//*[@id="wordle-app-game"]/div[1]/div/div[6]/div[4]/div',
+            'LETTER_5': '//*[@id="wordle-app-game"]/div[1]/div/div[6]/div[5]/div',
         },
     }

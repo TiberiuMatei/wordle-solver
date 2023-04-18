@@ -3,13 +3,12 @@ import sys
 import time
 from typing import OrderedDict
 
-from playwright.sync_api import sync_playwright
 from PySide6 import QtCore, QtGui
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QColor
 from PySide6.QtWidgets import *
+from playwright.sync_api import sync_playwright
 
-import ui.wordle_solver_qrc
 from starting_data.get_list_of_possible_words import GetListOfPossibleWords
 from starting_data.get_possible_words_info import GetPossibleWordsInfo
 from starting_data.get_starting_word import GetStartingWord
@@ -100,6 +99,7 @@ def solve_wordle() -> list:
         all_letters_state = []
 
         # Typing starting word
+        page.locator(WordleSelectors.BOARD['WORD_1']).click()
         page.type(WordleSelectors.BOARD['WORD_1'], starting_word)
         page.press(WordleSelectors.BOARD['WORD_1'], 'Enter')
 
