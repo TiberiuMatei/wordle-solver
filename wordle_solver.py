@@ -1,7 +1,7 @@
 import os
 import sys
 import time
-from typing import OrderedDict
+from collections import OrderedDict
 
 from PySide6 import QtCore, QtGui
 from PySide6.QtCore import Qt
@@ -22,7 +22,8 @@ from ui.ui_wordle_window import \
 
 TXT_FILE = "possible_words.txt"
 
-def keep_guessing(page : object, guessed_word_data : list) -> list:
+
+def keep_guessing(page: object, guessed_word_data: list) -> list:
     """
     Logic for iterating through wordle guesses until the solution is found
 
@@ -34,11 +35,12 @@ def keep_guessing(page : object, guessed_word_data : list) -> list:
         List containing the solution and the attempt number eg ['crane', 2]
     """
     solution_is_found = False
-    
-    while (solution_is_found is False):
-        for attempt in range(2,7): # Iterate through next wordle guesses after the starting word is provided (rows 2 - 6 from game board)
-            guess_scheme_data = OrderedDict() # Data scheme for entered guess needed for the next guess
-            all_letters_state = [] # List of every letter state (absent | present | correct)
+
+    while solution_is_found is False:
+        for attempt in range(2,
+                             7):  # Iterate through next wordle guesses after the starting word is provided (rows 2 - 6 from game board)
+            guess_scheme_data = OrderedDict()  # Data scheme for entered guess needed for the next guess
+            all_letters_state = []  # List of every letter state (absent | present | correct)
             letter_index = 0
 
             # If the word is not present in the possible_words.txt
@@ -52,13 +54,14 @@ def keep_guessing(page : object, guessed_word_data : list) -> list:
                 # Getting data for guessed word {index : [letter, letter_state]}
                 for selector in WordleSelectors.BOARD_DATA[f'WORD_{attempt}'].values():
                     time.sleep(0.5)
-                    guess_scheme_data[letter_index] = [page.inner_text(selector).lower(), page.get_attribute(selector, "data-state")] # {0: ['a', 'correct']}
+                    guess_scheme_data[letter_index] = [page.inner_text(selector).lower(), page.get_attribute(selector,
+                                                                                                             "data-state")]  # {0: ['a', 'correct']}
                     letter_index += 1
 
                 # Getting the state for every letter (absent | present | correct)
                 for letter_data in guess_scheme_data.values():
                     all_letters_state.append(letter_data[1])
-                
+
                 # Checking if all the letters are 'correct' and if the solution is found
                 # If the solution is not found return N/A 0/6
                 if set(all_letters_state) == {'correct'}:
@@ -67,7 +70,8 @@ def keep_guessing(page : object, guessed_word_data : list) -> list:
                 elif attempt == 6:
                     return ["N/A", 0]
                 else:
-                    guessed_word_data = WordleGuess.guess_word(guess_scheme_data, guessed_word_data[1]) # keep filtering for the next guess
+                    guessed_word_data = WordleGuess.guess_word(guess_scheme_data, guessed_word_data[
+                        1])  # keep filtering for the next guess
 
 
 def solve_wordle() -> list:
@@ -91,6 +95,7 @@ def solve_wordle() -> list:
 
         # Closing the cookies and the game info modals
         page.locator(WordleSelectors.CLOSE_COOKIES_RIBBON_BUTTON).click()
+        page.locator(WordleSelectors.PLAY_BUTTON).click()
         page.locator(WordleSelectors.CLOSE_GAME_INFO_MODAL_BUTTON).click()
 
         # Data needed for letter info after using starting word
@@ -106,13 +111,14 @@ def solve_wordle() -> list:
         # Getting data for starting word {index : [letter, letter_state]}
         for selector in WordleSelectors.BOARD_DATA['WORD_1'].values():
             time.sleep(0.5)
-            guess_scheme_data[letter_index] = [page.inner_text(selector).lower(), page.get_attribute(selector, "data-state")] # {0: ['a', 'correct']}
+            guess_scheme_data[letter_index] = [page.inner_text(selector).lower(),
+                                               page.get_attribute(selector, "data-state")]  # {0: ['a', 'correct']}
             letter_index += 1
 
         # Getting the state for every letter (absent | present | correct)
         for letter_data in guess_scheme_data.values():
             all_letters_state.append(letter_data[1])
-        
+
         # Checking if all the letters are 'correct' and the starting word was the solution
         if set(all_letters_state) == {'correct'}:
             return [starting_word, 1]
@@ -172,15 +178,16 @@ class UiWordleSolver(QMainWindow):
 
         # Show Main Window
         self.show()
-    
+
     # Move app window - drag
     def mousePressEvent(self, event):
         self.dragPos = event.globalPosition().toPoint()
-    
+
     def solve_wordle_from_ui(self):
         results_to_display = solve_wordle()
         self.ui.ui_result_word_label.setText("  ".join(results_to_display[0].upper()))
         self.ui.ui_result_attempt_label.setText(f"{results_to_display[1]} / 6")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
