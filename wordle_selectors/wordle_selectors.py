@@ -1,4 +1,5 @@
 class WordleSelectors:
+    TERMS_CONTINUE = '//button[contains(text(),"Continue")]'
     CLOSE_COOKIES_RIBBON_BUTTON = '#pz-gdpr-btn-closex'
     CLOSE_GAME_INFO_MODAL_BUTTON = '//button[@class="Modal-module_closeIcon__TcEKb"]'
     PLAY_BUTTON = '//button[@data-testid="Play"]'

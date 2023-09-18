@@ -29,7 +29,8 @@ def keep_guessing(page: object, guessed_word_data: list) -> list:
 
     Args:
         page: Playwright browser page needed for web interaction
-        guessed_word_data: The data needed for entering the next best guess (currently guessed word + the list of possible words)
+        guessed_word_data: The data needed for entering the next best guess (currently guessed word +
+        the list of possible words)
     
     Returns:
         List containing the solution and the attempt number eg ['crane', 2]
@@ -37,8 +38,8 @@ def keep_guessing(page: object, guessed_word_data: list) -> list:
     solution_is_found = False
 
     while solution_is_found is False:
-        for attempt in range(2,
-                             7):  # Iterate through next wordle guesses after the starting word is provided (rows 2 - 6 from game board)
+        for attempt in range(2, 7):
+            # Iterate through next wordle guesses after the starting word is provided (rows 2 - 6 from game board)
             guess_scheme_data = OrderedDict()  # Data scheme for entered guess needed for the next guess
             all_letters_state = []  # List of every letter state (absent | present | correct)
             letter_index = 0
@@ -54,8 +55,9 @@ def keep_guessing(page: object, guessed_word_data: list) -> list:
                 # Getting data for guessed word {index : [letter, letter_state]}
                 for selector in WordleSelectors.BOARD_DATA[f'WORD_{attempt}'].values():
                     time.sleep(0.5)
-                    guess_scheme_data[letter_index] = [page.inner_text(selector).lower(), page.get_attribute(selector,
-                                                                                                             "data-state")]  # {0: ['a', 'correct']}
+                    guess_scheme_data[letter_index] = [page.inner_text(selector).lower(),
+                                                       page.get_attribute(selector, "data-state")]
+                    # {0: ['a', 'correct']}
                     letter_index += 1
 
                 # Getting the state for every letter (absent | present | correct)
@@ -92,6 +94,9 @@ def solve_wordle() -> list:
         page = browser.new_page()
 
         page.goto("https://www.nytimes.com/games/wordle/index.html")
+
+        # Click on Continue button from Updated Terms
+        page.locator(WordleSelectors.TERMS_CONTINUE).click()
 
         # Closing the cookies and the game info modals
         page.locator(WordleSelectors.CLOSE_COOKIES_RIBBON_BUTTON).click()
